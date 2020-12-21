@@ -5,6 +5,7 @@ import Sider from "antd/lib/layout/Sider";
 import SubMenu from "antd/lib/menu/SubMenu";
 import 'antd/dist/antd.css';
 import '../App.css'
+import { Link } from 'react-router-dom'
 export default function Sidebar({}) {
 
 
@@ -14,7 +15,7 @@ export default function Sidebar({}) {
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
         <Menu.Item key="1">
           <PieChartOutlined />
-          <span>Option 1</span>
+          <Link to="/posts">게시글 보기</Link>
         </Menu.Item>
         <Menu.Item key="2">
           <UserOutlined />
