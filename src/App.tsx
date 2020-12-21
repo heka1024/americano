@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Breadcrumb, Layout } from 'antd';
+import 'antd/dist/antd.css';
 import './App.css';
+import Sidebar from './sidebar';
+const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
+  const [collapsed, setCollapsed] = React.useState(false)
+  const onCollapse = (x: boolean) => {
+    console.log(x)
+    setCollapsed(x)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Layout style={{ minHeight:"100vh"}}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={onCollapse}
+      >
+      <Sidebar />
+      </Sider>
+
+      <Layout>
+        <Header style={{ background: '#fff', padding: 0 }}> 대충 헤더 </Header>
+        <Content>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>User</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+          </Breadcrumb>
+          Content
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          SNULife Admin
+        </Footer>
+      </Layout>
+    </Layout>
+  )
 }
 
 export default App;
