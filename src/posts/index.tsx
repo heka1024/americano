@@ -20,15 +20,11 @@ interface PostThumbnail {
 const GET_POSTS = gql`
     query {
         posts {
+            id
             title
             tag
             content
-            board {
-                name
-            }
-            category {
-                name
-            }
+            
         }
     }
 `;
@@ -59,12 +55,8 @@ export default function Posts({}) {
           />
       </Sider>
       <Content style={{ padding: '0 50px', overflow: "auto" }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item> { cur?.board.name } </Breadcrumb.Item>
-          { cur?.category && <Breadcrumb.Item> { cur?.category?.name }</Breadcrumb.Item> }
-          <Breadcrumb.Item> { cur?.title }</Breadcrumb.Item>
-        </Breadcrumb>
-        <DetailView post={cur}/>
+
+        <DetailView id={cur?.id}/>
       </Content>
     </Layout>
   )
